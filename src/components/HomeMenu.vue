@@ -16,8 +16,8 @@
           <li class="list-group-item m-0">
             <router-link class="nav-link" to="/game">Jouer une partie</router-link>
           </li>
-          <li class="list-group-item m-0 disabled">Ajouter un joueur</li>
-          <li class="list-group-item m-0 disabled">Classement des joueurs</li>
+          <li class="list-group-item m-0 disabled disable-item">Ajouter un joueur</li>
+          <li class="list-group-item m-0 disabled disable-item">Classement des joueurs</li>
         </ul>
       </div>
 
@@ -53,6 +53,10 @@ li {
 .list-group-item:hover {
   background: #212529;
   color: white;
+}
+
+.disable-item {
+  background-color: lightgrey !important;
 }
 
 </style>

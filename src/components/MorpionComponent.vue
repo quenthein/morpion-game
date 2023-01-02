@@ -24,6 +24,7 @@
 
 
     <div class="text-center">
+
       <div v-if="winner" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
@@ -48,6 +49,8 @@
           </div>
         </div>
       </div>
+
+
       <router-link to="/" class="px-4 m-2 py-2 btn btn-dark rounded uppercase font-bold duration-300">Menu Principal</router-link>
       <button @click="ResetGame" class="px-4 m-2 py-2 btn btn-outline-dark rounded uppercase font-bold hover:bg-green-600 duration-300">Rejouer !</button>
     </div>
@@ -73,10 +76,12 @@ const CalculateWinner = (board) => {
       return board[a]
     }
   }
-  return null
 }
 
+/// applatir les tableaux
 const winner = computed(() => CalculateWinner(board.value.flat()))
+
+
 
 const MakeMove = (x, y) => {
   if (winner.value) return
