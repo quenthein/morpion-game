@@ -7,18 +7,20 @@
     </div>
     <h1 class="display-4 fw-bolder mb-8">Bienvenue</h1>
 
-
-    <div class="card mx-auto mt-4" style="width: 30%;">
-      <div class="card-header fs-3 fw-bold">
-        Que voulez-vous faire ?
+    <div class="row">
+      <div class="col-lg-5 col-sm-12 card mx-auto mt-4 p-0">
+        <div class="card-header fs-3 fw-bold">
+          Que voulez-vous faire ?
+        </div>
+        <ul class="list-group list-group-flush fs-5">
+          <li class="list-group-item m-0">
+            <router-link class="nav-link" to="/game">Jouer une partie</router-link>
+          </li>
+          <li class="list-group-item m-0 disabled">Ajouter un joueur</li>
+          <li class="list-group-item m-0 disabled">Classement des joueurs</li>
+        </ul>
       </div>
-      <ul class="list-group list-group-flush fs-5">
-        <li class="list-group-item m-0">
-          <router-link class="nav-link" to="/game">Jouer une partie</router-link>
-        </li>
-        <li class="list-group-item m-0 disabled">Ajouter un joueur</li>
-        <li class="list-group-item m-0 disabled">Classement des joueurs</li>
-      </ul>
+
     </div>
 
   </div>

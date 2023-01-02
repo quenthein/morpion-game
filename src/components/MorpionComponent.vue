@@ -5,6 +5,7 @@
 
     <h3 class="text-4xl font-bold mb-8 fade-in">👋 C'est le tour du joueur '{{ player }}'</h3>
 
+  <div class="container">
     <div class="flex flex-col items-center mb-8">
       <div
           v-for="(row, x) in board"
@@ -14,11 +15,13 @@
             v-for="(cell, y) in row"
             :key="y"
             @click="MakeMove(x, y)"
-            :class="`border border-black fw-bold w-24 h-24 hover:bg-gray-200 flex items-center justify-center material-icons-outlined text-4xl cursor-pointer ${cell === 'X' ? 'text-black-500' : 'text-red-600'}`">
+            :class="`morpion-tab border border-black fw-bold w-28 h-28 hover:bg-gray-200 flex items-center justify-center material-icons-outlined text-4xl cursor-pointer ${cell === 'X' ? 'text-black-500' : 'text-red-600'}`">
           {{ cell === 'X' ? 'X' : cell === 'O' ? 'O' : '' }}
         </div>
       </div>
     </div>
+  </div>
+
 
     <div class="text-center">
       <div v-if="winner" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
