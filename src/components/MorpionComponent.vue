@@ -3,7 +3,7 @@
 
   <div>
 
-    <h3 class="text-xl mb-4">Player {{ player }}'s turn</h3>
+    <h3 class="text-4xl font-bold mb-8 fade-in">👋 C'est le tour du joueur '{{ player }}'</h3>
 
     <div class="flex flex-col items-center mb-8">
       <div
@@ -14,15 +14,39 @@
             v-for="(cell, y) in row"
             :key="y"
             @click="MakeMove(x, y)"
-            :class="`border border-black fw-bold w-24 h-24 hover:bg-gray-700 flex items-center justify-center material-icons-outlined text-4xl cursor-pointer ${cell === 'X' ? 'text-black-500' : 'text-red-400'}`">
+            :class="`border border-black fw-bold w-24 h-24 hover:bg-gray-200 flex items-center justify-center material-icons-outlined text-4xl cursor-pointer ${cell === 'X' ? 'text-black-500' : 'text-red-600'}`">
           {{ cell === 'X' ? 'X' : cell === 'O' ? 'O' : '' }}
         </div>
       </div>
     </div>
 
     <div class="text-center">
-      <h2 v-if="winner" class="text-6xl font-bold mb-8">Player '{{ winner }}' wins!</h2>
-      <button @click="ResetGame" class="px-4 py-2 btn btn-outline-dark rounded uppercase font-bold hover:bg-green-600 duration-300">Rejouer !</button>
+      <div v-if="winner" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+          <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+            <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+              <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <div class="sm:flex sm:items-start">
+                  <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                    <h2 class="text-4xl font-bold mb-8">🎉 Joueur '{{ winner }}' a gagné !</h2>
+                    <div class="mt-2">
+                      <p class="fs-6 text-gray-500">Voulez vous rejouer une partie ?</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                <button @click="ResetGame" class="px-4 m-2 py-2 btn btn-outline-dark focus:bg-green-600 rounded uppercase font-bold hover:bg-green-600 duration-300">Rejouer !</button>
+                <router-link to="/" class="px-4 m-2 py-2 btn btn-dark rounded uppercase font-bold duration-300">Menu Principal</router-link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <router-link to="/" class="px-4 m-2 py-2 btn btn-dark rounded uppercase font-bold duration-300">Menu Principal</router-link>
+      <button @click="ResetGame" class="px-4 m-2 py-2 btn btn-outline-dark rounded uppercase font-bold hover:bg-green-600 duration-300">Rejouer !</button>
     </div>
   </div>
 
@@ -57,6 +81,7 @@ const MakeMove = (x, y) => {
   board.value[x][y] = player.value
   player.value = player.value === 'X' ? 'O' : 'X'
 }
+
 
 const ResetGame = () => {
   board.value = [
