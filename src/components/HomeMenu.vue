@@ -5,7 +5,7 @@
       <lottie-player class="mx-auto" src="https://assets10.lottiefiles.com/packages/lf20_34qRI0i4ti.json"  background="transparent"
                      speed="0.4"  style="width: 300px; height: 300px;"  loop autoplay></lottie-player>
     </div>
-    <h1 class="display-4 fw-bolder mb-8">Bienvenue</h1>
+    <h1 class="display-4 fw-bolder mb-4">Bienvenue</h1>
 
     <div class="row">
       <div class="col-lg-5 col-sm-12 card mx-auto mt-4 p-0">

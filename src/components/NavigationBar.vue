@@ -1,7 +1,9 @@
 <template>
   <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-      <router-link class="navbar-brand" to="/">Le Morpion</router-link>
+      <router-link class="navbar-brand" to="/">
+        <img style="width: 40px" src="../assets/logo-header.png">
+      </router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>

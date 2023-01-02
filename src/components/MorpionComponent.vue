@@ -50,6 +50,31 @@
         </div>
       </div>
 
+      <div v-if="isGameOver" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+          <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+            <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+              <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <div class="sm:flex sm:items-start">
+                  <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                    <h2 class="text-4xl font-bold mb-8">🍻Match nul !</h2>
+                    <div class="mt-2">
+                      <p class="fs-6 text-gray-500">Voulez vous rejouer une partie ?</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                <button @click="ResetGame" class="px-4 m-2 py-2 btn btn-outline-dark focus:bg-green-600 rounded uppercase font-bold hover:bg-green-600 duration-300">Rejouer !</button>
+                <router-link to="/" class="px-4 m-2 py-2 btn btn-dark rounded uppercase font-bold duration-300">Menu Principal</router-link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
       <router-link to="/" class="px-4 m-2 py-2 btn btn-dark rounded uppercase font-bold duration-300">Menu Principal</router-link>
       <button @click="ResetGame" class="px-4 m-2 py-2 btn btn-outline-dark rounded uppercase font-bold hover:bg-green-600 duration-300">Rejouer !</button>
@@ -82,7 +107,6 @@ const CalculateWinner = (board) => {
 const winner = computed(() => CalculateWinner(board.value.flat()))
 
 
-
 const MakeMove = (x, y) => {
   if (winner.value) return
   if (board.value[x][y]) return
@@ -90,6 +114,9 @@ const MakeMove = (x, y) => {
   player.value = player.value === 'X' ? 'O' : 'X'
 }
 
+const isGameOver = () => {
+  return
+}
 
 const ResetGame = () => {
   board.value = [
