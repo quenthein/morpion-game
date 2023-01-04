@@ -1,5 +1,5 @@
 # morpion-game (v1)
-
+![](src/assets/capture_readme.png)
 ## Règles du jeu
 - Jeu qui se joue à deux joueurs, sur un damier de 3 cases par 3 cases.
 - Chaque joueur est représenté par un "symbole"
