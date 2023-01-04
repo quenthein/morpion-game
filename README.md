@@ -1,24 +1,23 @@
-# morpion-game
+# morpion-game (v1)
 
-## Project setup
-```
-npm install
-```
+## Règles du jeu
+- Jeu qui se joue à deux joueurs, sur un damier de 3 cases par 3 cases.
+- Chaque joueur est représenté par un "symbole"
+- Un joueur utilise toujours le même type de "symbole"
+- Un premier joueur dessine son symbole sur une case. Puis c'est au tour de l'autre joueur de dessiner son symbole sur une case vide.
+- Le but du jeu est de réussir à aligner ses trois symboles (horizontal, vertical ou diagonale), on remporte alors la partie.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Démarrage
+Le jeu est accessible sur ce lien :<br>
+- <a href="https://morpion-game-1886b.web.app">Le Morpion</a>
 
-### Lints and fixes files
-```
-npm run lint
-```
+### Les prochaines versions comprendront
+- Un enregistrement des scores
+- La possibilité d'ajouter des joueurs en base de données
+- Un classement des meilleurs joueurs
+- ... et plus !
+<div style="height: 100px"></div>
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+#### Bonne partie !
