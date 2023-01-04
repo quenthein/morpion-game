@@ -1,7 +1,7 @@
 <template>
-  <div class="rules" style="margin-top: 100px">
+  <div class="rules row" style="margin-top: 100px">
     <h1 class="display-4 d-flex justify-content-center mb-4">Règles du jeu</h1>
-    <div class="card mx-auto text-bg-dark" style="width: 40rem">
+    <div class="card col-lg-5 col-sm-12 mx-auto text-bg-dark">
       <div class="card-body">
         <h2 class="card-title fs-4">Le Morpion</h2>
         <p class="card-text fst-italic">Le jeu se joue à 2 joueurs sur un damier de 3 cases par 3 cases</p>
@@ -33,3 +33,6 @@ export default {
 
 }
 </script>
+<style>
+
+</style>
