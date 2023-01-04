@@ -18,7 +18,7 @@
               <router-link class="nav-link active" aria-current="page" to="/">Accueil</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/about">À Propos</router-link>
+              <router-link class="nav-link" to="/rules">Règles du jeu</router-link>
             </li>
           </ul>
         </div>

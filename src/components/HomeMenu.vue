@@ -8,7 +8,7 @@
     <h1 class="display-4 fw-bolder mb-4">Bienvenue</h1>
 
     <div class="row">
-      <div class="col-lg-5 col-sm-12 card mx-auto mt-4 p-0">
+      <div class="col-lg-5 col-sm-12 card text-bg-dark mx-auto mt-4 p-0">
         <div class="card-header fs-3 fw-bold">
           Que voulez-vous faire ?
         </div>
@@ -31,6 +31,7 @@
 export default {
   name: 'HomeMenu',
 
+
 }
 
 </script>
@@ -51,7 +52,7 @@ li {
 }
 
 .list-group-item:hover {
-  background: #212529;
+  background: #424242;
   color: white;
 }
 
