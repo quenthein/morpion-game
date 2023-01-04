@@ -54,7 +54,7 @@
       </div>
 
       <!--
-      <div v-if="CalculateWinner" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+      <div v-else="" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
         <div class="fixed inset-0 z-10 overflow-y-auto">
@@ -78,6 +78,7 @@
           </div>
         </div>
       </div>
+
       -->
       <router-link to="/" class="px-4 m-2 py-2 btn btn-dark rounded uppercase font-bold duration-300">Menu Principal</router-link>
       <Transition name="slide-fade">
@@ -90,10 +91,16 @@
 </template>
 
 <script setup>
+
+/////Utilisation de Composition API
+
+
 import { ref, computed } from 'vue'
 
+//// affiche le bouton rejouer lors d'un move (début de partie)
 const show = ref(false)
 
+//// initialisation du player value X et tableau vide pour début de partie
 const player = ref('X')
 const board = ref([
   ['', '', ''],
@@ -102,6 +109,7 @@ const board = ref([
 ])
 
 
+//// Calcul du vainqueur (ajout des lignes victorieuses)
 const CalculateWinner = (board) => {
   const lines = [[0, 1, 2],[3, 4, 5],[6, 7, 8],[0, 3, 6],[1, 4, 7],[2, 5, 8],[0, 4, 8],[2, 4, 6]]
   for (let i = 0; i < lines.length; i++) {
@@ -115,7 +123,6 @@ const CalculateWinner = (board) => {
 /// applatir les tableaux
 const winner = computed(() => CalculateWinner(board.value.flat()))
 
-
 const MakeMove = (x, y) => {
   show.value = true
   if (winner.value) return
@@ -125,6 +132,7 @@ const MakeMove = (x, y) => {
 }
 
 
+//// Permet de clean le tableau pour rejouer
 const ResetGame = () => {
   board.value = [
     ['', '', ''],
