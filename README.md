@@ -1,5 +1,5 @@
 # morpion-game (v1)
-![](src/assets/capture_readme.png)
+<a target="_blank" href="https://morpion-game-1886b.web.app">![](src/assets/capture_readme.png)</a>
 ## Règles du jeu
 - Jeu qui se joue à deux joueurs, sur un damier de 3 cases par 3 cases.
 - Chaque joueur est représenté par un "symbole"
@@ -10,7 +10,7 @@
 
 ## Démarrage
 Le jeu est accessible sur ce lien :<br>
-- <a href="https://morpion-game-1886b.web.app">Le Morpion</a>
+- <a target="_blank" href="https://morpion-game-1886b.web.app">Le Morpion</a>
 
 ### Les prochaines versions comprendront
 - Un enregistrement des scores
