@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h3 class="text-4xl font-bold mb-8">👋 C'est le tour du joueur '{{ player }}'</h3>
+    <h3 class="text-4xl font-bold mb-8" v-if="!isDraw || !winner">👋 C'est le tour du joueur '{{ player }}'</h3>
+
     <div class="container">
       <div class="flex flex-col items-center mb-8">
         <div
@@ -53,17 +54,17 @@
         </div>
       </div>
 
-      <!--
-      <div v-else="" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+      <div v-if="isDraw" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
         <div class="fixed inset-0 z-10 overflow-y-auto">
           <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-            <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+            <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl
+            transition-all sm:my-8 sm:w-full sm:max-w-lg">
               <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <div class="sm:flex sm:items-start">
                   <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                    <h2 class="text-4xl font-bold mb-8">🍻Match nul !</h2>
+                    <h2 class="text-4xl font-bold mb-8">🍻 Match nul !</h2>
                     <div class="mt-2">
                       <p class="fs-6 text-gray-500">Voulez vous rejouer une partie ?</p>
                     </div>
@@ -71,16 +72,21 @@
                 </div>
               </div>
               <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                <button @click="ResetGame" class="px-4 m-2 py-2 btn btn-outline-dark focus:bg-green-600 rounded uppercase font-bold hover:bg-green-600 duration-300">Rejouer !</button>
-                <router-link to="/" class="px-4 m-2 py-2 btn btn-dark rounded uppercase font-bold duration-300">Menu Principal</router-link>
+
+                <button @click="ResetGame" v-if="show" class="px-4 m-2 py-2 btn btn-outline-dark focus:bg-green-600
+                rounded uppercase font-bold hover:bg-green-600 duration-300">Rejouer !</button>
+
+                <router-link to="/" class="px-4 m-2 py-2 btn btn-dark rounded uppercase
+                font-bold duration-300">Menu Principal</router-link>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      -->
-      <router-link to="/" class="px-4 m-2 py-2 btn btn-dark rounded uppercase font-bold duration-300">Menu Principal</router-link>
+
+      <router-link to="/" class="px-4 m-2 py-2 btn btn-dark rounded uppercase font-bold duration-300">
+        Menu Principal</router-link>
       <Transition name="slide-fade">
       <button @click="ResetGame" v-if="show" class="px-4 m-2 py-2 btn btn-outline-dark rounded uppercase
       font-bold hover:bg-green-600 duration-300">Rejouer !</button>
@@ -93,8 +99,6 @@
 <script setup>
 
 /////Utilisation de Composition API
-
-
 import { ref, computed } from 'vue'
 
 //// affiche le bouton rejouer lors d'un move (début de partie)
@@ -109,6 +113,28 @@ const board = ref([
 ])
 
 
+/// applatir les tableaux
+const winner = computed(() => {
+  return CalculateWinner(board.value.flat())
+});
+
+
+//// Calcul du match nul si pas de vainqueur
+const isDraw = computed (() => {
+  let isFull = true;
+  for (let i = 0; i < board.value.length; i++) {
+    for (let j = 0; j < board.value[i].length; j++) {
+      if(board.value[i][j] === '') {
+        isFull = false;
+        break;
+      }
+    }
+  }
+  return isFull && !winner.value;
+});
+
+
+
 //// Calcul du vainqueur (ajout des lignes victorieuses)
 const CalculateWinner = (board) => {
   const lines = [[0, 1, 2],[3, 4, 5],[6, 7, 8],[0, 3, 6],[1, 4, 7],[2, 5, 8],[0, 4, 8],[2, 4, 6]]
@@ -120,9 +146,8 @@ const CalculateWinner = (board) => {
   }
 }
 
-/// applatir les tableaux
-const winner = computed(() => CalculateWinner(board.value.flat()))
-
+//// Prend en entrée les coordonnées de la case cliquée / vérifie si gagnant ou si case rempli /
+//// Sinon affecte la valeur du joueur actuel à la case cliquée et change le joueur actuel pour le prochain tour
 const MakeMove = (x, y) => {
   show.value = true
   if (winner.value) return
