@@ -1,36 +1,71 @@
 <template>
-  <nav class="navbar navbar-dark bg-dark fixed-top">
-    <div class="container-fluid">
-      <router-link class="navbar-brand" to="/">
-        <img style="width: 40px" src="../assets/logo-header.png">
-      </router-link>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu Principal</h5>
-          <button style="color: white" type="button" class="btn btn-light" data-bs-dismiss="offcanvas" aria-label="Close">x</button>
-        </div>
-        <div class="offcanvas-body">
-          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            <li class="nav-item">
-              <router-link class="nav-link active" aria-current="page" to="/">Accueil</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link class="nav-link" to="/rules">Règles du jeu</router-link>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </nav>
-</template>
+      <v-app-bar
+          color="dark"
+          prominent
+      >
+        <v-app-bar-nav-icon variant="text">
+          <v-icon
+              icon="mdi-crop-square"
+              color="white"
+          ></v-icon>
+        </v-app-bar-nav-icon>
 
+        <v-spacer></v-spacer>
+
+
+        <v-btn variant="text"
+               icon="mdi-dots-vertical"
+               color="white"
+               @click.stop="drawer = !drawer"
+        >
+
+        </v-btn>
+      </v-app-bar>
+
+      <v-navigation-drawer
+          v-model="drawer"
+          location="bottom"
+          class="bg-dark text-white"
+          temporary
+      >
+        <v-container class="menu-rules">
+          <h1 class="text-h5">Rappel des règles</h1>
+
+        </v-container>
+      </v-navigation-drawer>
+
+</template>
 <script>
 export default {
-  name: "NavigationBar",
+  data: () => ({
+    name: "NavigationBar",
+    drawer: false,
+    group: null,
+    items: [
+      {
+        title: 'Foo',
+        value: 'foo',
+      },
+      {
+        title: 'Bar',
+        value: 'bar',
+      },
+      {
+        title: 'Fizz',
+        value: 'fizz',
+      },
+      {
+        title: 'Buzz',
+        value: 'buzz',
+      },
+    ],
+  }),
 
+  watch: {
+    group () {
+      this.drawer = false
+    },
+  },
 }
 </script>
 
