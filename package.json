@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@material/animation": "^14.0.0",
     "@mdi/font": "5.9.55",
     "bootstrap": "^5.2.3",
     "core-js": "^3.8.3",
@@ -15,6 +16,7 @@
     "pinia": "^2.0.27",
     "popper.js": "^1.16.1",
     "roboto-fontface": "*",
+    "sass-loader": "^13.2.0",
     "vue": "^3.2.13",
     "vue-router": "^4.1.6",
     "vuetify": "^3.0.0-beta.0",
